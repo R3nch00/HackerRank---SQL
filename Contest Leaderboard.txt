@@ -1,0 +1,6 @@
+SELECT H.hacker_id,H.name,SUM(Point)
+FROM Hackers H
+INNER JOIN(SELECT S.hacker_id,MAX(score) AS Point FROM Submissions S GROUP BY S.hacker_id,S.challenge_id) SS ON H.hacker_id=SS.hacker_id
+GROUP BY H.hacker_id,H.name
+HAVING SUM(Point)>0
+ORDER BY SUM(Point) DESC, H.hacker_id ASC 

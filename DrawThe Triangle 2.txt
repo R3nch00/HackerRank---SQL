@@ -1,0 +1,4 @@
+SET @temp:=0;
+SELECT REPEAT('* ',@temp:=@temp+1)
+FROM information_schema.tables
+WHERE @temp<20;

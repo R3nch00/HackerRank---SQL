@@ -1,0 +1,3 @@
+SET @temp:=21;
+SELECT REPEAT('* ',@temp:=@temp-1)
+FROM information_schema.tables;
