@@ -1,0 +1,8 @@
+SELECT X,Y
+FROM Functions f
+WHERE EXISTS (SELECT * FROM Functions f1 WHERE f1.Y=f.X AND f1.X=f.Y AND f1.X>f.X) AND(Y!=X)
+UNION 
+SELECT X,Y
+FROM Functions f
+WHERE X=Y AND((SELECT COUNT(*) FROM Functions WHERE X=f.X AND Y=f.X)>1)
+ORDER BY X;
