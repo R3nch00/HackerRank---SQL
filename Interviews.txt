@@ -1,0 +1,5 @@
+SELECT Con.contest_id,Con.hacker_id,Con.name,
+SUM(total_submissions),SUM(total_accepted_submissions),SUM(total_views),SUM(total_unique_views)   
+FROM Contests Con      
+JOIN Colleges Col ON Col.contest_id=Con.contest_id          
+JOIN Challenges Cha ON Cha.college_id=Col.college_id   

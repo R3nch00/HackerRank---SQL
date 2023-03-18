@@ -1,0 +1,12 @@
+SELECT listagg(Prime_Number,'&') within group(ORDER BY Prime_Number)
+FROM( SELECT P Prime_Number FROM
+    (SELECT Level P
+    FROM Dual
+    CONNECT by Level<=1000),
+    (SELECT Level M
+    FROM Dual
+    CONNECT by Level<=1000)
+    WHERE M<=P
+    GROUP BY P
+    HAVING COUNT(CASE WHEN P/M=trunc(P/M) THEN 'Y' END)=2
+    ORDER BY P); 
